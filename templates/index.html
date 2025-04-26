@@ -15,7 +15,13 @@
                 body: JSON.stringify({ input: userInput }),
             });
             const data = await response.json();
-            document.getElementById('result').innerText = data.result;
+            const resultElement = document.getElementById('result');
+            if (data.result === '正確') {
+                resultElement.style.color = 'green';
+            } else {
+                resultElement.style.color = 'red';
+            }
+            resultElement.innerText = data.result;
         }
     </script>
 </head>
