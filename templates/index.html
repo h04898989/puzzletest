@@ -16,15 +16,10 @@
             });
             const data = await response.json();
             const resultElement = document.getElementById('result');
-            const statusElement = document.getElementById('status');
             if (data.result === '正確') {
                 resultElement.style.color = 'green';
-                statusElement.innerText = '答案正確！';
-                statusElement.style.color = 'green';
             } else {
                 resultElement.style.color = 'red';
-                statusElement.innerText = '答案錯誤，請再試一次。';
-                statusElement.style.color = 'red';
             }
             resultElement.innerText = data.result;
         }
@@ -35,6 +30,5 @@
     <input type="text" id="userInput" placeholder="請輸入內容">
     <button onclick="validateInput()">提交</button>
     <p id="result"></p>
-    <p id="status"></p> <!-- 新增的欄位，用於顯示答案狀態 -->
 </body>
 </html>
