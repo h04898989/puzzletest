@@ -43,7 +43,7 @@ ul li a:hover {
     margin-top: 20px;
 }
 
-/* 提示按鈕樣式 */
+/* 燈泡提示按鈕樣式 */
 .hint-button {
     display: flex;
     align-items: center;
@@ -149,5 +149,35 @@ p {
 }
 
 .return-button-container button:hover {
+    background-color: #1976D2; /* 深藍色背景 */
+}
+
+/* 提示按鈕列表容器 */
+.hint-list {
+    display: flex; /* 使用 Flexbox */
+    flex-direction: column; /* 垂直排列按鈕 */
+    align-items: center; /* 水平置中按鈕 */
+    gap: 10px; /* 按鈕之間的間距 */
+    padding: 0;
+    list-style: none; /* 移除預設的列表樣式 */
+}
+
+.hint-list li {
+    width: 100%; /* 讓按鈕佔據整行寬度（可選） */
+    text-align: center; /* 讓按鈕文字置中 */
+}
+
+.hint-list button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #2196F3; /* 藍色背景 */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    white-space: nowrap; /* 防止文字換行 */
+}
+
+.hint-list button:hover {
     background-color: #1976D2; /* 深藍色背景 */
 }

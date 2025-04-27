@@ -14,7 +14,7 @@
 </head>
 <body>
     <h1>{{ game_name }} - 關卡 {{ level_id }} 提示</h1>
-    <ul>
+    <ul class="hint-list">
         {% for hint in hints %}
         <li>
             <button onclick="toggleHint('hint-{{ loop.index }}')">提示 {{ loop.index }}</button>
