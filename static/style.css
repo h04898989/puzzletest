@@ -10,7 +10,7 @@ body {
 
 h1, h2 {
     text-align: center;
-    color: #4CAF50;
+    color: #2196F3; /* 修改為藍色 */
 }
 
 ul {
@@ -25,13 +25,13 @@ ul li {
 
 ul li a {
     text-decoration: none;
-    color: #4CAF50;
+    color: #2196F3; /* 修改為藍色 */
     font-weight: bold;
     font-size: 18px;
 }
 
 ul li a:hover {
-    color: #388E3C;
+    color: #1976D2; /* 修改為深藍色 */
 }
 
 button {
@@ -40,14 +40,14 @@ button {
     padding: 10px 20px;
     font-size: 16px;
     color: #fff;
-    background-color: #4CAF50;
+    background-color: #2196F3; /* 修改為藍色 */
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #388E3C;
+    background-color: #1976D2; /* 修改為深藍色 */
 }
 
 section {
