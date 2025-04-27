@@ -36,9 +36,19 @@ def level(game_id, level_id):
 def validate():
     data = request.json
     user_input = data.get('input', '')
+    game_id = data.get('game_id')
+    level_id = int(data.get('level_id'))  # 將 level_id 轉為整數
+
     # 假設正確答案是 "daniel"
     if user_input.lower() == 'daniel':
-        return jsonify({'result': '正確'})
+        next_level_id = level_id + 1
+        # 檢查下一關是否存在
+        if str(next_level_id) in GAME_DATA.get(game_id, {}).get("levels", {}):
+            next_url = f"/game/{game_id}/level/{next_level_id}"
+            return jsonify({'result': '正確', 'next_url': next_url})
+        else:
+            # 如果沒有下一關，回到遊戲選擇頁面
+            return jsonify({'result': '正確', 'next_url': f"/game/{game_id}"})
     else:
         return jsonify({'result': '錯誤'})
 

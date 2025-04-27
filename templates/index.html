@@ -12,16 +12,21 @@
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ input: userInput }),
+                body: JSON.stringify({
+                    input: userInput,
+                    game_id: "{{ game_id }}",
+                    level_id: "{{ level_id }}"
+                }),
             });
             const data = await response.json();
-            const resultElement = document.getElementById('result');
             if (data.result === '正確') {
-                resultElement.style.color = 'green';
+                // 跳轉到下一關
+                window.location.href = data.next_url;
             } else {
+                const resultElement = document.getElementById('result');
                 resultElement.style.color = 'red';
+                resultElement.innerText = '答案錯誤，請再試一次！';
             }
-            resultElement.innerText = data.result;
         }
     </script>
 </head>
