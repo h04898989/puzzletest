@@ -17,7 +17,7 @@
     <ul class="hint-list">
         {% for hint in hints %}
         <li>
-            <button onclick="toggleHint('hint-{{ loop.index }}')">提示 {{ loop.index }}</button>
+            <button class="hint-button" onclick="toggleHint('hint-{{ loop.index }}')">提示 {{ loop.index }}</button>
             <p id="hint-{{ loop.index }}" style="display: none;">{{ hint }}</p>
         </li>
         {% endfor %}
