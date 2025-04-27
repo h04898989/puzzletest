@@ -50,6 +50,24 @@ button:hover {
     background-color: #1976D2; /* 修改為深藍色 */
 }
 
+/* 提示按鈕樣式 */
+.hint-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #FFC107; /* 黃色背景 */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.hint-button:hover {
+    background-color: #FFA000; /* 深黃色背景 */
+}
+
 section {
     margin: 20px auto;
     padding: 20px;

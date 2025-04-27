@@ -50,8 +50,12 @@
     <section>
         <h2>填答區</h2>
         <input type="text" id="userInput" placeholder="請輸入答案">
-        <button onclick="validateInput()">提交</button>
-        <button onclick="window.location.href='/game/{{ game_id }}/level/{{ level_id }}/hints'">提示</button>
+        <div style="display: flex; justify-content: center; gap: 10px;">
+            <button onclick="validateInput()">送出</button>
+            <button class="hint-button" onclick="window.location.href='/game/{{ game_id }}/level/{{ level_id }}/hints'">
+                💡 提示
+            </button>
+        </div>
         <p id="result"></p>
     </section>
     
