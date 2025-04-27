@@ -26,8 +26,12 @@ def game(game_id):
     levels = game.get("levels", {}).keys()  # 獲取所有關卡的 ID
     levels = sorted(map(int, levels))  # 將關卡 ID 轉為整數並排序
 
-    # 獲取使用者的進度
-    progress = session.get(f'progress_{game_id}', 0)
+    # 獲取使用者的進度，並確保第一關預設為已解鎖
+    progress_key = f'progress_{game_id}'
+    if progress_key not in session:
+        session[progress_key] = 1  # 初始化進度為第一關已解鎖
+
+    progress = session.get(progress_key, 0)
 
     return render_template('levels.html', game_id=game_id, game_name=game_name, levels=levels, progress=progress)
 
