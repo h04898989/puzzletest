@@ -3,8 +3,12 @@ from flask import Flask, render_template, request, jsonify
 app = Flask(__name__)
 
 @app.route('/')
-def index():
-    return render_template('index.html')
+def home():
+    return render_template('home.html')
+
+@app.route('/game/<game_id>')
+def game(game_id):
+    return render_template('index.html', game_id=game_id)
 
 @app.route('/validate', methods=['POST'])
 def validate():
