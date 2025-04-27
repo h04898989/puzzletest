@@ -131,7 +131,9 @@ p {
 
 /* 返回按鈕容器 */
 .return-button-container {
-    text-align: center; /* 讓按鈕容器內的內容置中 */
+    display: flex; /* 使用 Flexbox */
+    justify-content: center; /* 水平置中 */
+    align-items: center; /* 垂直置中（如果需要） */
     margin-top: 20px; /* 與上方內容保持距離 */
 }
 
@@ -139,12 +141,12 @@ p {
     padding: 10px 20px;
     font-size: 16px;
     color: #fff;
-    background-color: #4CAF50; /* 綠色背景 */
+    background-color: #2196F3; /* 藍色背景 */
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
 
 .return-button-container button:hover {
-    background-color: #388E3C; /* 深綠色背景 */
+    background-color: #1976D2; /* 深藍色背景 */
 }
