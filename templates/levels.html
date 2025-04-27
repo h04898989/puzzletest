@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>選擇關卡</title>
+    <title>{{ game_name }}</title> <!-- 動態設置標題 -->
 </head>
 <body>
-    <h1>daniel探險記 - 遊戲 {{ game_id }}</h1>
+    <h1>daniel探險記 - {{ game_name }}</h1>
     <h2>選擇關卡</h2>
     <ul>
         <li><a href="/game/{{ game_id }}/level/1">關卡 1</a></li>
