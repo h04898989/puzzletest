@@ -69,6 +69,15 @@ button:hover {
     background-color: #FFA000; /* 深黃色背景 */
 }
 
+section {
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 800px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 input[type="text"] {
     padding: 10px;
     width: 80%;
