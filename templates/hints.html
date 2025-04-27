@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ game_name }} - 關卡 {{ level_id }} 提示</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script>
+        function toggleHint(id) {
+            const hintText = document.getElementById(id);
+            hintText.style.display = hintText.style.display === 'none' ? 'block' : 'none';
+        }
+    </script>
+</head>
+<body>
+    <h1>{{ game_name }} - 關卡 {{ level_id }} 提示</h1>
+    <ul>
+        {% for hint in hints %}
+        <li>
+            <button onclick="toggleHint('hint-{{ loop.index }}')">提示 {{ loop.index }}</button>
+            <p id="hint-{{ loop.index }}" style="display: none;">{{ hint }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+    <button onclick="window.location.href='/game/{{ game_id }}/level/{{ level_id }}'">返回關卡</button>
+</body>
+</html>
