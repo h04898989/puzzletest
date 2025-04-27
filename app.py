@@ -1,11 +1,11 @@
 from flask import Flask, render_template, request, jsonify
-import json
+import yaml
 
 app = Flask(__name__)
 
 # 讀取遊戲名稱資料
-with open('games.json', 'r', encoding='utf-8') as f:
-    GAME_DATA = json.load(f)
+with open('games.yaml', 'r', encoding='utf-8') as f:
+    GAME_DATA = yaml.safe_load(f)
 
 @app.route('/')
 def home():
