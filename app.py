@@ -57,6 +57,21 @@ def level(game_id, level_id):
         hint=hint
     )
 
+@app.route('/game/<game_id>/level/<level_id>/hints')
+def hints(game_id, level_id):
+    game = GAME_DATA.get(game_id, {})
+    game_name = game.get("name", "未知遊戲")
+    level_data = game.get("levels", {}).get(level_id, {})
+    hints = level_data.get("hints", [])
+
+    return render_template(
+        'hints.html',
+        game_id=game_id,
+        level_id=level_id,
+        game_name=game_name,
+        hints=hints
+    )
+
 @app.route('/validate', methods=['POST'])
 def validate():
     data = request.json
