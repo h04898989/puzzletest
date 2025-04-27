@@ -20,8 +20,11 @@ def home():
 
 @app.route('/game/<game_id>')
 def game(game_id):
-    game_name = GAME_DATA.get(game_id, {}).get("name", "未知遊戲")
-    return render_template('levels.html', game_id=game_id, game_name=game_name)
+    game = GAME_DATA.get(game_id, {})
+    game_name = game.get("name", "未知遊戲")
+    levels = game.get("levels", {}).keys()  # 獲取所有關卡的 ID
+    levels = sorted(map(int, levels))  # 將關卡 ID 轉為整數並排序
+    return render_template('levels.html', game_id=game_id, game_name=game_name, levels=levels)
 
 @app.route('/game/<game_id>/level/<level_id>')
 def level(game_id, level_id):

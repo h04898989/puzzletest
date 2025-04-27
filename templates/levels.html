@@ -9,11 +9,9 @@
     <h1>{{ game_name }}</h1>
     <h2>選擇關卡</h2>
     <ul>
-        <li><a href="/game/{{ game_id }}/level/1">關卡 1</a></li>
-        <li><a href="/game/{{ game_id }}/level/2">關卡 2</a></li>
-        <li><a href="/game/{{ game_id }}/level/3">關卡 3</a></li>
-        <li><a href="/game/{{ game_id }}/level/4">關卡 4</a></li>
-        <li><a href="/game/{{ game_id }}/level/5">關卡 5</a></li>
+        {% for level_id in levels %}
+        <li><a href="/game/{{ game_id }}/level/{{ level_id }}">關卡 {{ level_id }}</a></li>
+        {% endfor %}
     </ul>
 </body>
 </html>
