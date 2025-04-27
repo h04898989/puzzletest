@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ game_name }}</title>
+    <title>{{ game_name }} - 關卡 {{ level_id }}</title>
     <script>
         async function validateInput() {
             const userInput = document.getElementById('userInput').value;
@@ -27,8 +27,25 @@
 </head>
 <body>
     <h1>{{ game_name }} - 關卡 {{ level_id }}</h1>
-    <input type="text" id="userInput" placeholder="請輸入答案">
-    <button onclick="validateInput()">提交</button>
-    <p id="result"></p>
+    
+    <!-- 遊戲劇情描述 -->
+    <section>
+        <h2>劇情描述</h2>
+        <p>{{ description }}</p>
+    </section>
+    
+    <!-- 小提示 -->
+    <section>
+        <h2>小提示</h2>
+        <p>{{ hint }}</p>
+    </section>
+    
+    <!-- 填答欄位 -->
+    <section>
+        <h2>填答區</h2>
+        <input type="text" id="userInput" placeholder="請輸入答案">
+        <button onclick="validateInput()">提交</button>
+        <p id="result"></p>
+    </section>
 </body>
 </html>
