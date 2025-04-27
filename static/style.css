@@ -128,3 +128,23 @@ p {
     font-weight: bold;
     cursor: not-allowed;
 }
+
+/* 返回按鈕容器 */
+.return-button-container {
+    text-align: center; /* 讓按鈕容器內的內容置中 */
+    margin-top: 20px; /* 與上方內容保持距離 */
+}
+
+.return-button-container button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #4CAF50; /* 綠色背景 */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.return-button-container button:hover {
+    background-color: #388E3C; /* 深綠色背景 */
+}
