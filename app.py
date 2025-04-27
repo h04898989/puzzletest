@@ -8,7 +8,11 @@ def home():
 
 @app.route('/game/<game_id>')
 def game(game_id):
-    return render_template('index.html', game_id=game_id)
+    return render_template('levels.html', game_id=game_id)
+
+@app.route('/game/<game_id>/level/<level_id>')
+def level(game_id, level_id):
+    return render_template('index.html', game_id=game_id, level_id=level_id)
 
 @app.route('/validate', methods=['POST'])
 def validate():
