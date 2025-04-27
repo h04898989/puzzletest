@@ -50,7 +50,25 @@ button:hover {
     background-color: #1976D2; /* 修改為深藍色 */
 }
 
-/* 提示按鈕樣式 */
+/* 輸入框與提示按鈕的容器 */
+.input-container {
+    display: flex;
+    justify-content: center; /* 讓整個容器置中 */
+    align-items: center; /* 垂直置中 */
+    gap: 10px; /* 輸入框與按鈕之間的間距 */
+    max-width: 600px; /* 限制容器的最大寬度 */
+    margin: 0 auto; /* 讓容器置中 */
+}
+
+.input-container input[type="text"] {
+    flex: 1; /* 讓輸入框佔據剩餘空間 */
+    max-width: 400px; /* 限制輸入框的最大寬度 */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
 .hint-button {
     display: flex;
     align-items: center;

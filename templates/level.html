@@ -49,8 +49,8 @@
     <!-- 填答欄位 -->
     <section>
         <h2>填答區</h2>
-        <div style="display: flex; justify-content: center; align-items: center; gap: 10px;">
-            <input type="text" id="userInput" placeholder="請輸入答案" style="flex: 1; max-width: 400px;">
+        <div class="input-container">
+            <input type="text" id="userInput" placeholder="請輸入答案">
             <button class="hint-button" onclick="window.location.href='/game/{{ game_id }}/level/{{ level_id }}/hints'">
                 💡 提示
             </button>
