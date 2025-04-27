@@ -34,7 +34,7 @@ def level(game_id, level_id):
     description = level_data.get("description", "沒有劇情描述")
     hint = level_data.get("hint", "沒有提示")
     return render_template(
-        'index.html',
+        'level.html',
         game_id=game_id,
         level_id=level_id,
         game_name=game_name,
