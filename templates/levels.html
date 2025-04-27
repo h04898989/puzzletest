@@ -11,7 +11,13 @@
     <h2>選擇關卡</h2>
     <ul>
         {% for level_id in levels %}
-        <li><a href="/game/{{ game_id }}/level/{{ level_id }}">關卡 {{ level_id }}</a></li>
+        <li>
+            {% if level_id <= progress %}
+            <a href="/game/{{ game_id }}/level/{{ level_id }}">關卡 {{ level_id }}</a>
+            {% else %}
+            <span class="locked">關卡 {{ level_id }}（未解鎖）</span>
+            {% endif %}
+        </li>
         {% endfor %}
     </ul>
     <button onclick="window.location.href='/'">返回主頁</button>

@@ -74,3 +74,9 @@ p {
     text-align: center;
     font-size: 16px;
 }
+
+.locked {
+    color: #ccc;
+    font-weight: bold;
+    cursor: not-allowed;
+}
