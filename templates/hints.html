@@ -18,7 +18,7 @@
         {% for hint in hints %}
         <li>
             <button class="hint-button" onclick="toggleHint('hint-{{ loop.index }}')">提示 {{ loop.index }}</button>
-            <p id="hint-{{ loop.index }}" style="display: none;">{{ hint }}</p>
+            <p id="hint-{{ loop.index }}" class="hint-text" style="display: none;">{{ hint }}</p>
         </li>
         {% endfor %}
     </ul>

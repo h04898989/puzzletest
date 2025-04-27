@@ -157,7 +157,6 @@ p {
     display: flex; /* 使用 Flexbox */
     flex-direction: column; /* 垂直排列按鈕 */
     align-items: center; /* 水平置中按鈕 */
-    justify-content: center; /* 垂直置中按鈕 */
     gap: 10px; /* 按鈕之間的間距 */
     padding: 0;
     list-style: none; /* 移除預設的列表樣式 */
@@ -168,7 +167,8 @@ p {
     width: auto; /* 讓按鈕的寬度根據內容自適應 */
     text-align: center; /* 讓按鈕文字置中 */
     display: flex; /* 使用 Flexbox */
-    justify-content: center; /* 水平置中按鈕 */
+    flex-direction: column; /* 確保按鈕和文字垂直排列 */
+    align-items: center; /* 水平置中 */
 }
 
 /* 提示按鈕樣式 */
@@ -185,4 +185,12 @@ p {
 
 .hint-list button:hover {
     background-color: #1976D2; /* 深藍色背景 */
+}
+
+/* 提示文字樣式 */
+.hint-text {
+    margin-top: 10px; /* 與按鈕保持距離 */
+    font-size: 14px;
+    color: #333;
+    text-align: center;
 }
