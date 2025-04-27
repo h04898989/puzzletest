@@ -75,13 +75,17 @@ def hints(game_id, level_id):
 @app.route('/validate', methods=['POST'])
 def validate():
     data = request.json
-    user_input = data.get('input', '')
+    user_input = data.get('input', '').strip()
     game_id = data.get('game_id')
-    level_id = int(data.get('level_id'))  # 將 level_id 轉為整數
+    level_id = str(data.get('level_id'))  # 確保 level_id 是字串
 
-    # 假設正確答案是 "daniel"
-    if user_input.lower() == 'daniel':
-        next_level_id = level_id + 1
+    # 獲取當前關卡的資料
+    level_data = GAME_DATA.get(game_id, {}).get("levels", {}).get(level_id, {})
+    correct_answer = "daniel"  # 假設正確答案是 "daniel"
+    feedback_data = level_data.get("feedback", {})
+
+    if user_input.lower() == correct_answer:
+        next_level_id = int(level_id) + 1
 
         # 更新使用者的進度
         progress_key = f'progress_{game_id}'
@@ -97,7 +101,14 @@ def validate():
             end_url = f"/game/{game_id}/end"
             return jsonify({'result': '正確', 'next_url': end_url})
     else:
-        return jsonify({'result': '錯誤'})
+        # 檢查是否有符合的 feedback
+        feedback_message = None
+        for keyword, feedback in feedback_data.items():
+            if keyword in user_input:
+                feedback_message = feedback
+                break
+
+        return jsonify({'result': '錯誤', 'feedback': feedback_message})
 
 @app.route('/game/<game_id>/end')
 def end(game_id):

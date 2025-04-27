@@ -20,13 +20,22 @@
                 }),
             });
             const data = await response.json();
+            const resultElement = document.getElementById('result');
+            const feedbackElement = document.getElementById('feedback');
+
             if (data.result === '正確') {
                 // 跳轉到下一關或結局頁面
                 window.location.href = data.next_url;
             } else {
-                const resultElement = document.getElementById('result');
                 resultElement.style.color = 'red';
                 resultElement.innerText = '答案錯誤，請再試一次！';
+
+                // 顯示回饋內容（如果有）
+                if (data.feedback) {
+                    feedbackElement.innerText = data.feedback;
+                } else {
+                    feedbackElement.innerText = ''; // 清空回饋內容
+                }
             }
         }
     </script>
@@ -59,6 +68,7 @@
             <button onclick="validateInput()">送出</button>
         </div>
         <p id="result"></p>
+        <p id="feedback" style="color: red;"></p>
     </section>
     
     <!-- 新增返回按鈕 -->
