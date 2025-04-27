@@ -34,7 +34,7 @@ ul li a:hover {
     color: #1976D2; /* 修改為深藍色 */
 }
 
-/* 按鈕容器 */
+/* 提示和送出按鈕容器 */
 .button-container {
     display: flex;
     justify-content: center; /* 讓按鈕容器置中 */
@@ -80,7 +80,7 @@ button:hover {
     background-color: #1976D2; /* 深藍色背景 */
 }
 
-/* 輸入框與提示按鈕的容器 */
+/* 輸入框的容器 */
 .input-container {
     display: flex;
     justify-content: center; /* 讓整個容器置中 */
@@ -150,4 +150,34 @@ p {
 
 .return-button-container button:hover {
     background-color: #1976D2; /* 深藍色背景 */
+}
+
+/* 提示按鈕列表容器 */
+.hint-list {
+    display: flex; /* 使用 Flexbox */
+    flex-direction: column; /* 垂直排列按鈕 */
+    align-items: center; /* 水平置中按鈕 */
+    gap: 10px; /* 按鈕之間的間距 */
+    padding: 0;
+    list-style: none; /* 移除預設的列表樣式 */
+}
+
+.hint-list li {
+    width: 100%; /* 讓按鈕佔據整行寬度（可選） */
+    text-align: center; /* 讓按鈕文字置中 */
+}
+
+.hint-list button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #FFC107; /* 黃色背景 */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    white-space: nowrap; /* 防止文字換行 */
+}
+
+.hint-list button:hover {
+    background-color: #FFA000; /* 深黃色背景 */
 }
