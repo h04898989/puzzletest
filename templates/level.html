@@ -51,11 +51,11 @@
         <h2>填答區</h2>
         <div class="input-container">
             <input type="text" id="userInput" placeholder="請輸入答案">
+        </div>
+        <div class="button-container">
             <button class="hint-button" onclick="window.location.href='/game/{{ game_id }}/level/{{ level_id }}/hints'">
                 💡 提示
             </button>
-        </div>
-        <div style="text-align: center; margin-top: 20px;">
             <button onclick="validateInput()">送出</button>
         </div>
         <p id="result"></p>

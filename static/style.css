@@ -34,20 +34,50 @@ ul li a:hover {
     color: #1976D2; /* 修改為深藍色 */
 }
 
-button {
-    display: block;
-    margin: 20px auto;
+/* 按鈕容器 */
+.button-container {
+    display: flex;
+    justify-content: center; /* 讓按鈕容器置中 */
+    align-items: center; /* 垂直置中 */
+    gap: 10px; /* 按鈕之間的間距 */
+    margin-top: 20px;
+}
+
+/* 提示按鈕樣式 */
+.hint-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 10px 20px;
     font-size: 16px;
     color: #fff;
-    background-color: #2196F3; /* 修改為藍色 */
+    background-color: #FFC107; /* 黃色背景 */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    white-space: nowrap; /* 防止文字換行 */
+}
+
+.hint-button:hover {
+    background-color: #FFA000; /* 深黃色背景 */
+}
+
+/* 送出按鈕樣式 */
+button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #2196F3; /* 藍色背景 */
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #1976D2; /* 修改為深藍色 */
+    background-color: #1976D2; /* 深藍色背景 */
 }
 
 /* 輸入框與提示按鈕的容器 */
@@ -67,24 +97,6 @@ button:hover {
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
-}
-
-.hint-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 20px;
-    font-size: 16px;
-    color: #fff;
-    background-color: #FFC107; /* 黃色背景 */
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    white-space: nowrap; /* 防止文字換行 */
-}
-
-.hint-button:hover {
-    background-color: #FFA000; /* 深黃色背景 */
 }
 
 section {
