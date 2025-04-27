@@ -20,7 +20,7 @@
             });
             const data = await response.json();
             if (data.result === '正確') {
-                // 跳轉到下一關
+                // 跳轉到下一關或結局頁面
                 window.location.href = data.next_url;
             } else {
                 const resultElement = document.getElementById('result');

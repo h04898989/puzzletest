@@ -3,9 +3,10 @@ import yaml
 
 app = Flask(__name__)
 
-# 讀取遊戲名稱資料
+# 讀取遊戲名稱資料，並將所有鍵轉換為字串
 with open('games.yaml', 'r', encoding='utf-8') as f:
     GAME_DATA = yaml.safe_load(f)
+    GAME_DATA = {str(key): value for key, value in GAME_DATA.items()}
 
 @app.route('/')
 def home():
@@ -20,7 +21,7 @@ def game(game_id):
 def level(game_id, level_id):
     game = GAME_DATA.get(game_id, {})
     game_name = game.get("name", "未知遊戲")
-    level_data = game.get("levels", {}).get(level_id, {})
+    level_data = game.get("levels", {}).get(str(level_id), {})
     description = level_data.get("description", "沒有劇情描述")
     hint = level_data.get("hint", "沒有提示")
     return render_template(
@@ -47,8 +48,14 @@ def validate():
             next_url = f"/game/{game_id}/level/{next_level_id}"
             return jsonify({'result': '正確', 'next_url': next_url})
         else:
-            # 如果沒有下一關，回到遊戲選擇頁面
-            return jsonify({'result': '正確', 'next_url': f"/game/{game_id}"})
+            # 如果沒有下一關，跳轉到結局頁面
+            end_url = f"/game/{game_id}/end"
+            return jsonify({'result': '正確', 'next_url': end_url})
     else:
         return jsonify({'result': '錯誤'})
+
+@app.route('/game/<game_id>/end')
+def end(game_id):
+    game_name = GAME_DATA.get(game_id, {}).get("name", "未知遊戲")
+    return render_template('end.html', game_name=game_name)
 
