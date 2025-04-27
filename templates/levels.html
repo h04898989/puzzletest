@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ game_name }}</title> <!-- 動態設置標題 -->
+    <title>{{ game_name }}</title>
+    <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
     <h1>{{ game_name }}</h1>
@@ -13,7 +14,6 @@
         <li><a href="/game/{{ game_id }}/level/{{ level_id }}">關卡 {{ level_id }}</a></li>
         {% endfor %}
     </ul>
-    <!-- 新增返回主頁按鈕 -->
     <button onclick="window.location.href='/'">返回主頁</button>
 </body>
 </html>

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ game_name }} - 關卡 {{ level_id }}</title>
+    <link rel="stylesheet" href="/static/style.css">
     <script>
         async function validateInput() {
             const userInput = document.getElementById('userInput').value;
@@ -54,6 +55,6 @@
     </section>
     
     <!-- 新增返回按鈕 -->
-    <button onclick="window.location.href='/game/{{ game_id }}'">返回</button>
+    <button onclick="window.location.href='/game/{{ game_id }}'">選擇關卡</button>
 </body>
 </html>

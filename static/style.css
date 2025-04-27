@@ -1,0 +1,76 @@
+/* 全局樣式 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+h1, h2 {
+    text-align: center;
+    color: #4CAF50;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    margin: 10px 0;
+    text-align: center;
+}
+
+ul li a {
+    text-decoration: none;
+    color: #4CAF50;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+ul li a:hover {
+    color: #388E3C;
+}
+
+button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #388E3C;
+}
+
+section {
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 800px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"] {
+    display: block;
+    margin: 10px auto;
+    padding: 10px;
+    width: 80%;
+    max-width: 400px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+p {
+    text-align: center;
+    font-size: 16px;
+}
