@@ -22,6 +22,8 @@
         </li>
         {% endfor %}
     </ul>
-    <button onclick="window.location.href='/game/{{ game_id }}/level/{{ level_id }}'">返回關卡</button>
+    <div class="return-button-container">
+        <button onclick="window.location.href='/game/{{ game_id }}/level/{{ level_id }}'">返回關卡</button>
+    </div>
 </body>
 </html>
