@@ -1,7 +1,8 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, session
 import yaml
 
 app = Flask(__name__)
+app.secret_key = 'your_secret_key'  # 用於啟用 Flask 的 session
 
 # 讀取遊戲名稱資料，並將所有鍵轉換為字串
 with open('games.yaml', 'r', encoding='utf-8') as f:
@@ -24,7 +25,11 @@ def game(game_id):
     game_name = game.get("name", "未知遊戲")
     levels = game.get("levels", {}).keys()  # 獲取所有關卡的 ID
     levels = sorted(map(int, levels))  # 將關卡 ID 轉為整數並排序
-    return render_template('levels.html', game_id=game_id, game_name=game_name, levels=levels)
+
+    # 獲取使用者的進度
+    progress = session.get(f'progress_{game_id}', 0)
+
+    return render_template('levels.html', game_id=game_id, game_name=game_name, levels=levels, progress=progress)
 
 @app.route('/game/<game_id>/level/<level_id>')
 def level(game_id, level_id):
@@ -33,6 +38,12 @@ def level(game_id, level_id):
     level_data = game.get("levels", {}).get(level_id, {})
     description = level_data.get("description", "沒有劇情描述")
     hint = level_data.get("hint", "沒有提示")
+
+    # 確保使用者只能訪問已解鎖的關卡
+    progress = session.get(f'progress_{game_id}', 0)
+    if int(level_id) > progress + 1:
+        return "尚未解鎖此關卡", 403
+
     return render_template(
         'level.html',
         game_id=game_id,
@@ -52,6 +63,10 @@ def validate():
     # 假設正確答案是 "daniel"
     if user_input.lower() == 'daniel':
         next_level_id = level_id + 1
+
+        # 更新使用者的進度
+        session[f'progress_{game_id}'] = max(session.get(f'progress_{game_id}', 0), level_id)
+
         # 檢查下一關是否存在
         if str(next_level_id) in GAME_DATA.get(game_id, {}).get("levels", {}):
             next_url = f"/game/{game_id}/level/{next_level_id}"
