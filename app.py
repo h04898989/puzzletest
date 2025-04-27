@@ -81,7 +81,7 @@ def validate():
 
     # 獲取當前關卡的資料
     level_data = GAME_DATA.get(game_id, {}).get("levels", {}).get(level_id, {})
-    correct_answer = "daniel"  # 假設正確答案是 "daniel"
+    correct_answer = level_data.get("correct_answer", "").lower()
     feedback_data = level_data.get("feedback", {})
 
     if user_input.lower() == correct_answer:
