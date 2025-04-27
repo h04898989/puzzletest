@@ -6,9 +6,6 @@
     <title>{{ game_name }} - 關卡 {{ level_id }}</title>
     <link rel="stylesheet" href="/static/style.css">
     <script>
-        const resultElement = document.getElementById('result');
-        const feedbackElement = document.getElementById('feedback');
-    
         async function validateInput() {
             const userInput = document.getElementById('userInput').value;
             const response = await fetch('/validate', {
@@ -23,16 +20,22 @@
                 }),
             });
             const data = await response.json();
-    
+            const resultElement = document.getElementById('result');
+            const feedbackElement = document.getElementById('feedback');
+
             if (data.result === '正確') {
                 // 跳轉到下一關或結局頁面
                 window.location.href = data.next_url;
             } else {
                 resultElement.style.color = 'red';
                 resultElement.innerText = '答案錯誤，請再試一次！';
-    
+
                 // 顯示回饋內容（如果有）
-                feedbackElement.innerText = data.feedback || ''; // 簡化條件判斷
+                if (data.feedback) {
+                    feedbackElement.innerText = data.feedback;
+                } else {
+                    feedbackElement.innerText = ''; // 清空回饋內容
+                }
             }
         }
     </script>
