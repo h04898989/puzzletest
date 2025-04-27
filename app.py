@@ -6,7 +6,13 @@ app = Flask(__name__)
 # 讀取遊戲名稱資料，並將所有鍵轉換為字串
 with open('games.yaml', 'r', encoding='utf-8') as f:
     GAME_DATA = yaml.safe_load(f)
-    GAME_DATA = {str(key): value for key, value in GAME_DATA.items()}
+    GAME_DATA = {
+        str(key): {
+            "name": value["name"],
+            "levels": {str(k): v for k, v in value.get("levels", {}).items()}
+        }
+        for key, value in GAME_DATA.items()
+    }
 
 @app.route('/')
 def home():
@@ -21,7 +27,7 @@ def game(game_id):
 def level(game_id, level_id):
     game = GAME_DATA.get(game_id, {})
     game_name = game.get("name", "未知遊戲")
-    level_data = game.get("levels", {}).get(str(level_id), {})
+    level_data = game.get("levels", {}).get(level_id, {})
     description = level_data.get("description", "沒有劇情描述")
     hint = level_data.get("hint", "沒有提示")
     return render_template(
