@@ -49,12 +49,14 @@
     <!-- 填答欄位 -->
     <section>
         <h2>填答區</h2>
-        <input type="text" id="userInput" placeholder="請輸入答案">
-        <div style="display: flex; justify-content: center; gap: 10px;">
-            <button onclick="validateInput()">送出</button>
+        <div style="display: flex; justify-content: center; align-items: center; gap: 10px;">
+            <input type="text" id="userInput" placeholder="請輸入答案" style="flex: 1; max-width: 400px;">
             <button class="hint-button" onclick="window.location.href='/game/{{ game_id }}/level/{{ level_id }}/hints'">
                 💡 提示
             </button>
+        </div>
+        <div style="text-align: center; margin-top: 20px;">
+            <button onclick="validateInput()">送出</button>
         </div>
         <p id="result"></p>
     </section>

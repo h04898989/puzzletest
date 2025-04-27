@@ -62,30 +62,21 @@ button:hover {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    white-space: nowrap; /* 防止文字換行 */
 }
 
 .hint-button:hover {
     background-color: #FFA000; /* 深黃色背景 */
 }
 
-section {
-    margin: 20px auto;
-    padding: 20px;
-    max-width: 800px;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
 input[type="text"] {
-    display: block;
-    margin: 10px auto;
     padding: 10px;
     width: 80%;
     max-width: 400px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
+    flex: 1; /* 讓輸入框自適應寬度 */
 }
 
 p {
