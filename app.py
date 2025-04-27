@@ -69,7 +69,9 @@ def validate():
         next_level_id = level_id + 1
 
         # 更新使用者的進度
-        session[f'progress_{game_id}'] = max(session.get(f'progress_{game_id}', 0), level_id)
+        progress_key = f'progress_{game_id}'
+        current_progress = session.get(progress_key, 0)
+        session[progress_key] = max(current_progress, level_id)
 
         # 檢查下一關是否存在
         if str(next_level_id) in GAME_DATA.get(game_id, {}).get("levels", {}):
