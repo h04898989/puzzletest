@@ -9,8 +9,6 @@
 <body>
     <h1>恭喜通關！</h1>
     <p>你已完成 {{ game_name }} 的所有關卡！</p>
-    <p>使用的提示數：{{ len(session.get('hints_used_' + game_id, [])) }}</p>
-    <p>最終分數：{{ session.get('score_' + game_id, game.initial_score) }}</p>
     <div class="return-button-container">
         <button onclick="window.location.href='/'">返回主頁</button>
     </div>
