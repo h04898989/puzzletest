@@ -17,11 +17,26 @@
     <ul class="hint-list">
         {% for hint in hints %}
         <li>
-            <button class="hint-button" onclick="toggleHint('hint-{{ loop.index }}')">提示 {{ loop.index }}</button>
-            <p id="hint-{{ loop.index }}" class="hint-text" style="display: none;">{{ hint }}</p>
+            <button class="hint-button" onclick="useHint({{ loop.index }}, 'hint-{{ loop.index }}')">提示 {{ loop.index }}</button>
+            <p id="hint-{{ loop.index }}" class="hint-text" style="display: none;">{{ hint.text }}</p>
         </li>
         {% endfor %}
     </ul>
+    <p id="score">剩餘分數：{{ session.get('score_' + game_id, game.initial_score) }}</p>
+
+<script>
+    async function useHint(hintIndex, hintId) {
+        const response = await fetch(`/game/{{ game_id }}/level/{{ level_id }}/hint/${hintIndex}`, {
+            method: 'POST',
+        });
+        const data = await response.json();
+
+        if (data.message === '提示已使用') {
+            document.getElementById(hintId).style.display = 'block';
+        }
+        document.getElementById('score').innerText = `剩餘分數：${data.score}`;
+    }
+</script>
     <div class="return-button-container">
         <button onclick="window.location.href='/game/{{ game_id }}/level/{{ level_id }}'">返回關卡</button>
     </div>

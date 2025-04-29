@@ -115,3 +115,33 @@ def end(game_id):
     game_name = GAME_DATA.get(game_id, {}).get("name", "未知遊戲")
     return render_template('end.html', game_name=game_name)
 
+@app.route('/game/<game_id>/level/<level_id>/hint/<hint_index>', methods=['POST'])
+def use_hint(game_id, level_id, hint_index):
+    hint_index = int(hint_index) - 1  # 將提示索引轉為 0 基數
+    game = GAME_DATA.get(game_id, {})
+    level_data = game.get("levels", {}).get(level_id, {})
+    hints = level_data.get("hints", [])
+
+    # 確保提示索引有效
+    if hint_index < 0 or hint_index >= len(hints):
+        return jsonify({'error': '無效的提示索引'}), 400
+
+    # 初始化遊戲分數和提示使用記錄
+    score_key = f'score_{game_id}'
+    hints_used_key = f'hints_used_{game_id}'
+    if score_key not in session:
+        session[score_key] = game.get("initial_score", 100)
+    if hints_used_key not in session:
+        session[hints_used_key] = set()
+
+    # 檢查是否已使用過該提示
+    if hint_index in session[hints_used_key]:
+        return jsonify({'message': '提示已使用過', 'score': session[score_key]})
+
+    # 扣除分數並記錄提示使用
+    hint_cost = hints[hint_index].get("cost", 2)
+    session[score_key] -= hint_cost
+    session[hints_used_key].add(hint_index)
+
+    return jsonify({'message': '提示已使用', 'score': session[score_key]})
+
