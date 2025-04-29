@@ -123,6 +123,11 @@ p {
     font-size: 16px;
 }
 
+/* level description容器 */
+.description {
+    text-align: left; /* 將 description 的文字靠左對齊 */
+}
+
 .locked {
     color: #ccc;
     font-weight: bold;
